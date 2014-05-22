@@ -12,11 +12,11 @@ public class Control {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            x = 1;
+            x = 2;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            x = -1;
+            x = -2;
         }
     }
 
