@@ -17,6 +17,8 @@ public class Board extends JPanel implements ActionListener {
 
     private Timer timer;
     private Map map;
+    private Map map2;
+    private Map map3;
 
     public Board() {
 
@@ -25,7 +27,9 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.white);
         setDoubleBuffered(true);
 
-        map = new Map();
+        map = new Map("map", 1.0);
+        map2 = new Map("map2", 1.0);
+        map3 = new Map("map3", 0.5);
 
         timer = new Timer(5, this);
         timer.start();
@@ -35,6 +39,8 @@ public class Board extends JPanel implements ActionListener {
         super.paint(graphics);
 
         Graphics2D graphics2D = (Graphics2D)graphics;
+        graphics2D.drawImage(map3.getMap(), map3.getX(), map3.getY(), this);
+        graphics2D.drawImage(map2.getMap(), map2.getX(), map2.getY(), this);
         graphics2D.drawImage(map.getMap(), map.getX(), map.getY(), this);
 
         Toolkit.getDefaultToolkit().sync();
@@ -44,6 +50,7 @@ public class Board extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         map.move();
+        map2.move();
         repaint();
     }
 
@@ -51,10 +58,12 @@ public class Board extends JPanel implements ActionListener {
 
         public void keyReleased(KeyEvent e) {
             map.control.keyReleased(e);
+            map2.control.keyReleased(e);
         }
 
         public void keyPressed(KeyEvent e) {
-            map.control.keyPressed(e);
+            map.control.keyPressed(e, map.getMapSpeed());
+            map2.control.keyPressed(e, map2.getMapSpeed());
         }
     }
 }

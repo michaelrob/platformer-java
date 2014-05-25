@@ -4,19 +4,19 @@ import java.awt.event.KeyEvent;
 
 public class Control {
 
-    public int x = 0;
-    public int y = 0;
+    public Double x = 0.0;
+    public Double y = 0.0;
 
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e, Double speed) {
 
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            x = 2;
+            x = speed;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            x = -2;
+            x = -speed;
         }
     }
 
@@ -24,11 +24,11 @@ public class Control {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            x = 0;
+            x = 0.0;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            x = 0;
+            x = 0.0;
         }
     }
 }

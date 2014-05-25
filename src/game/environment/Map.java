@@ -18,11 +18,14 @@ public class Map extends JPanel {
     private int y;
     private int dx;
     private int dy;
+    public Double mapSpeed;
 
-    public Map() {
+    public Map(String path, Double speed) {
+
+        mapSpeed = speed;
 
         try {
-            map = ImageIO.read(new File("src/game/res/map.png"));
+            map = ImageIO.read(new File("src/game/res/" + path + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,6 +33,7 @@ public class Map extends JPanel {
         y = 0;
 
         control = new Control();
+
     }
 
     public void move() {
@@ -43,6 +47,10 @@ public class Map extends JPanel {
 
     public int getY() {
         return y;
+    }
+
+    public Double getMapSpeed() {
+        return mapSpeed;
     }
 
     public BufferedImage getMap() {
